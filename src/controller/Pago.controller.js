@@ -26,23 +26,14 @@ export const getOne = async (req, res) => {
 
 export const create = async (req, res) => {
   try {
-    const {
-      total,
-      cantidad_boletos,
-      nombre_postul,
-      id,
-      nombre,
-      descripcion,
-      precio,
-      imagen,
-    } = req.body;
+    const { total, cantidad_boletos, nombre_postul, id } = req.body;
 
     const crearPago = await Pago.create(
       {
         total,
         cantidad_boletos,
         nombre_postul,
-        anps: [nombre, descripcion, precio, imagen],
+        anps: [id],
       },
       {
         include: Anp,
